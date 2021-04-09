@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
 import sys
-import xlrd
-import csv
+import pandas as pd
 
 
 def main(args):
     if not args[0]:
         sys.exit(1)
-    book = xlrd.open_workbook(args[0])
-    sh = book.sheet_by_index(0)
-    csv_writer = csv.writer(sys.stdout, quoting=csv.QUOTE_ALL)
-    for i in range(sh.nrows):
-        csv_writer.writerow(sh.row_values(i))
+
+    df = pd.read_excel(
+        args[0],
+        engine='openpyxl',
+    )
+    df.to_csv(sys.stdout)
 
 
 if __name__ == '__main__':
