@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
-import xlrd
-import pandas as pd
 import sys
+import xlrd
+import csv
 
 
 if __name__ == '__main__':
     args = sys.argv[1:]
     if not args[0]:
         sys.exit(1)
-    xls = pd.ExcelFile(args[0])
-    df = xls.parse(sheetname="Sheet1", index_col=None, na_values=['NA'])
-    df.to_csv(sys.stdout)
+    book = xlrd.open_workbook(args[0])
+    sh = book.sheet_by_index(0)
+    csv_writer = csv.writer(sys.stdout, quoting=csv.QUOTE_ALL)
+    for i in range(sh.nrows):
+        csv_writer.writerow(sh.row_values(i))
