@@ -6,9 +6,9 @@ authors = ["Andrew Chen <yongjhih@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9.2"
-xlrd = "^2.0.1"
 openpyxl = "^3.0.7"
 pandas = "^1.2.3"
+xlrd = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 
