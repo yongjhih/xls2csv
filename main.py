@@ -5,8 +5,7 @@ import xlrd
 import csv
 
 
-if __name__ == '__main__':
-    args = sys.argv[1:]
+def main(args):
     if not args[0]:
         sys.exit(1)
     book = xlrd.open_workbook(args[0])
@@ -14,3 +13,8 @@ if __name__ == '__main__':
     csv_writer = csv.writer(sys.stdout, quoting=csv.QUOTE_ALL)
     for i in range(sh.nrows):
         csv_writer.writerow(sh.row_values(i))
+
+
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    main(args)
