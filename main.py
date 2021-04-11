@@ -10,7 +10,7 @@ def main(args):
 
     df = pd.read_excel(
         args[0],
-        engine='openpyxl',
+        #engine='openpyxl',
     )
     df.to_csv(sys.stdout)
 
